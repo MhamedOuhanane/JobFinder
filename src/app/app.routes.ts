@@ -4,8 +4,20 @@ import { roleGuard } from './core/guards/role-guard';
 export const routes: Routes = [
     {
         path: '',
-        loadComponent: () =>
-            import('./features/auth/home-redirect/home-redirect').then((m) => m.HomeRedirect),
+        loadComponent: () => import('./shared/components/layout/layout').then((m) => m.Layout),
+        children: [
+            {
+                path: '',
+                loadComponent: () =>
+                    import('./features/auth/home-redirect/home-redirect').then(
+                        (m) => m.HomeRedirect,
+                    ),
+            },
+            {
+                path: 'jobs',
+                loadComponent: () => import('./features/jobs/jobs').then((m) => m.Jobs),
+            },
+        ],
     },
 
     {
