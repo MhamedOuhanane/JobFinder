@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FavoriteService } from '../../../core/services/favorite-service';
 import { Favorite } from '../../../core/models/favorite.model';
 import { FavoriteButton } from '../favorite-button/favorite-button';
+import { ApplyButton } from '../apply-button/apply-button';
 
 @Component({
     selector: 'app-job-card',
-    imports: [CommonModule, FavoriteButton],
+    imports: [CommonModule, FavoriteButton, ApplyButton],
     templateUrl: './job-card.html',
     styles: ``,
 })

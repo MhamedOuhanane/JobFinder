@@ -44,12 +44,7 @@
         @if (isAuth) {
             <app-favorite-button [job]="job()" />
 
-            <button
-                class="bg-orange-500 hover:bg-orange-600 text-black p-2.5 rounded-xl transition-all shadow-lg shadow-orange-500/20"
-                title="Quick Apply"
-            >
-                <span class="material-icons text-[20px]">send</span>
-            </button>
+            <app-apply-button [job]="job()" />
         }
     </div>
 </div>

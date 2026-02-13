@@ -6,12 +6,12 @@ import { Job } from '../models/job.model';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class ApplicationService {
-  private http = inject(HttpClient);
+    private http = inject(HttpClient);
     private apiUrl = `${environment.jsonServerUrl}/applications`;
-    
+
     apply(userId: number, job: Job): Observable<Application> {
         const newApp: Application = {
             userId,
@@ -21,15 +21,16 @@ export class ApplicationService {
             company: job.company.name,
             location: job.locations[0]?.name || 'Remote',
             url: job.refs.landing_page,
-            status: 'en_attente',
+            status: 'pending',
             notes: '',
-            dateAdded: new Date().toISOString()
+            dateAdded: new Date().toISOString(),
         };
         return this.http.post<Application>(this.apiUrl, newApp);
     }
 
     checkIfApplied(userId: number, offerId: string): Observable<Application | null> {
-        return this.http.get<Application[]>(`${this.apiUrl}?userId=${userId}&offerId=${offerId}`)
-            .pipe(map(apps => apps.length > 0 ? apps[0] : null));
+        return this.http
+            .get<Application[]>(`${this.apiUrl}?userId=${userId}&offerId=${offerId}`)
+            .pipe(map((apps) => (apps.length > 0 ? apps[0] : null)));
     }
 }
