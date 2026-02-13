@@ -40,50 +40,12 @@
     }
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @for (job of searchResult()?.jobs; track job.id) {
-            <div
-                class="group bg-[#1a1a1a] border border-white/5 p-6 rounded-2xl hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300 shadow-lg"
-            >
-                <div class="flex justify-between items-start mb-4">
-                    <div
-                        class="bg-orange-500/10 text-orange-500 text-[10px] px-2 py-1 rounded font-black tracking-widest uppercase"
-                    >
-                        {{ job.levels[0]?.name || 'INTERN' }}
-                    </div>
-                    <span class="text-neutral-600 text-xs">{{
-                        job.publication_date | date: 'MMM d'
-                    }}</span>
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-white mb-1 group-hover:text-orange-500 transition-colors"
-                >
-                    {{ job.name }}
-                </h3>
-                <p class="text-orange-500/70 text-sm mb-4 font-semibold">{{ job.company.name }}</p>
-
-                <div class="flex flex-wrap gap-2 mb-4">
-                    @for (loc of job.locations; track loc.name) {
-                        <span
-                            class="text-[10px] bg-black px-2 py-1 rounded text-neutral-400 flex items-center gap-1"
-                        >
-                            <span class="material-icons text-xs text-orange-500">location_on</span>
-                            {{ loc.name }}
-                        </span>
-                    }
-                </div>
-
-                <p class="text-sm text-neutral-500 line-clamp-3 mb-6 leading-relaxed">
-                    {{ stripHtml(job.contents) }}
-                </p>
-
-                <a
-                    [href]="job.refs.landing_page"
-                    target="_blank"
-                    class="block w-full text-center py-3 border border-white/10 rounded-xl text-white font-bold hover:bg-white hover:text-black transition-all"
-                >
-                    View Details
-                </a>
+        @for (item of searchResult()?.jobs; track item.id) {
+            <app-job-card [job]="item"> </app-job-card>
+        } @empty {
+            <div class="col-span-full text-center py-20">
+                <span class="material-icons text-6xl text-neutral-800 mb-4">search_off</span>
+                <p class="text-neutral-500 italic">No jobs match your criteria.</p>
             </div>
         }
     </div>

@@ -1,11 +1,8 @@
+import { Job } from './job.model';
+
 export interface Favorite {
-    id?: number;
-    userId: number;
-    offerId: string;
-    apiSource: string;
-    title: string;
-    company: string;
-    location: string;
-    url: string;
+    id?: string;
+    userId: string;
+    job: Job;
     dateAdded: string;
 }

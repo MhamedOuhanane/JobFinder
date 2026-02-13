@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { JobService } from '../../core/services/job-service';
 import { JobSearchParams, JobSearchResult } from '../../core/models/job.model';
 import { toast } from 'ngx-sonner';
+import { JobCard } from '../../shared/components/job-card/job-card';
 
 @Component({
     selector: 'app-jobs',
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, JobCard],
     templateUrl: './jobs.html',
     styles: ``,
 })
@@ -59,6 +60,4 @@ export class Jobs {
     stripHtml(html: string) {
         return html?.replace(/<[^>]*>?/gm, '') || '';
     }
-
-    
 }
