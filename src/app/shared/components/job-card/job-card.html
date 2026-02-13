@@ -42,12 +42,7 @@
         </a>
 
         @if (isAuth) {
-            <button
-                class="p-2.5 rounded-xl border border-white/10 text-neutral-500 hover:text-red-500 hover:border-red-500/30 transition-all"
-                title="Add to Favorites"
-            >
-                <span class="material-icons text-[20px]">favorite_border</span>
-            </button>
+            <app-favorite-button [job]="job()" />
 
             <button
                 class="bg-orange-500 hover:bg-orange-600 text-black p-2.5 rounded-xl transition-all shadow-lg shadow-orange-500/20"
