@@ -13,7 +13,7 @@ import { toast } from 'ngx-sonner';
         <button
             (click)="toggleFavorite($event)"
             [disabled]="isProcessing()"
-            class="p-2.5 rounded-xl border border-white/10 transition-all flex items-center justify-center min-w-[45px]"
+            class="p-2.5 rounded-xl border border-white/10 transition-all flex items-center justify-center min-w-11.25"
             [ngClass]="
                 favoriteData()
                     ? 'text-red-500 border-red-500/30 bg-red-500/5'
