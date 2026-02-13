@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { Favorite } from '../models/favorite.model';
 import { Job } from '../models/job.model';
 
@@ -11,6 +11,13 @@ import { Job } from '../models/job.model';
 export class FavoriteService {
     private http = inject(HttpClient);
     private apiUrl = `${environment.jsonServerUrl}/favoritesOffers`;
+
+    private favoriteUpdate = new Subject<void>();
+    favoriteUpdate$ = this.favoriteUpdate.asObservable();
+
+    notifyRefresh() {
+        this.favoriteUpdate.next();
+    }
 
     getFavoritesByUserId(userId: string | number): Observable<Favorite[]> {
         return this.http.get<Favorite[]>(`${this.apiUrl}?userId=${userId}`);
@@ -23,11 +30,15 @@ export class FavoriteService {
             dateAdded: new Date().toISOString(),
         };
 
-        return this.http.post<Favorite>(this.apiUrl, newFavorite);
+        return this.http.post<Favorite>(this.apiUrl, newFavorite).pipe(
+            tap(() => this.notifyRefresh())
+        );
     }
 
     removeFromFavorites(favoriteId: string): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/${favoriteId}`);
+        return this.http.delete<void>(`${this.apiUrl}/${favoriteId}`).pipe(
+            tap(() => this.notifyRefresh())
+        );
     }
 
     checkIfFavorited(userId: string, jobId: string): Observable<Favorite | null> {
