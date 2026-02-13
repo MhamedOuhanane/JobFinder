@@ -69,6 +69,13 @@
             "lastName": "Idrissi",
             "email": "sofia@test.com",
             "password": "sofia_password"
+        },
+        {
+            "id": "4d8a",
+            "firstName": "M'hamed",
+            "lastName": "Ouhanane",
+            "email": "mhmdeouhnan60@gmail.com",
+            "password": "mhmdeouhnan@"
         }
     ],
     "favoritesOffers": [],
