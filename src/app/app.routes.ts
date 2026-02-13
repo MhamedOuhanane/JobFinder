@@ -17,11 +17,12 @@ export const routes: Routes = [
                 path: 'jobs',
                 loadComponent: () => import('./features/jobs/jobs').then((m) => m.Jobs),
             },
-            { 
-                path: 'favorites', 
-                loadComponent: () => import('./shared/pages/favorites/favorites').then(c => c.Favorites),
+            {
+                path: 'favorites',
+                loadComponent: () =>
+                    import('./shared/pages/favorites/favorites').then((c) => c.Favorites),
                 canActivate: [roleGuard],
-                data: { roles: ['client'] }
+                data: { roles: ['client'] },
             },
         ],
     },

@@ -33,4 +33,8 @@ export class ApplicationService {
             .get<Application[]>(`${this.apiUrl}?userId=${userId}&offerId=${offerId}`)
             .pipe(map((apps) => (apps.length > 0 ? apps[0] : null)));
     }
+
+    getUserApplications(userId: string): Observable<Application[]> {
+        return this.http.get<Application[]>(`${this.apiUrl}?userId=${userId}`);
+    }
 }

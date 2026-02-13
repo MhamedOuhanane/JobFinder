@@ -30,15 +30,15 @@ export class FavoriteService {
             dateAdded: new Date().toISOString(),
         };
 
-        return this.http.post<Favorite>(this.apiUrl, newFavorite).pipe(
-            tap(() => this.notifyRefresh())
-        );
+        return this.http
+            .post<Favorite>(this.apiUrl, newFavorite)
+            .pipe(tap(() => this.notifyRefresh()));
     }
 
     removeFromFavorites(favoriteId: string): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/${favoriteId}`).pipe(
-            tap(() => this.notifyRefresh())
-        );
+        return this.http
+            .delete<void>(`${this.apiUrl}/${favoriteId}`)
+            .pipe(tap(() => this.notifyRefresh()));
     }
 
     checkIfFavorited(userId: string, jobId: string): Observable<Favorite | null> {
