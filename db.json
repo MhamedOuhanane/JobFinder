@@ -1,15 +1,75 @@
 {
     "users": [
-        { "id": "1", "firstName": "Amine", "lastName": "Benani", "email": "amine@test.com", "password": "password123" },
-        { "id": "2", "firstName": "Sara", "lastName": "Kadi", "email": "sara@test.com", "password": "password123" },
-        { "id": "3", "firstName": "Yassine", "lastName": "Zaki", "email": "yassine@test.com", "password": "password123" },
-        { "id": "4", "firstName": "Laila", "lastName": "Mansouri", "email": "laila@test.com", "password": "password123" },
-        { "id": "5", "firstName": "Karim", "lastName": "Tahiri", "email": "karim@test.com", "password": "password123" },
-        { "id": "6", "firstName": "Hiba", "lastName": "Alami", "email": "hiba@test.com", "password": "password123" },
-        { "id": "7", "firstName": "Omar", "lastName": "Fassi", "email": "omar@test.com", "password": "password123" },
-        { "id": "8", "firstName": "Nadia", "lastName": "Safi", "email": "nadia@test.com", "password": "password123" },
-        { "id": "9", "firstName": "Mehdi", "lastName": "Rami", "email": "mehdi@test.com", "password": "password123" },
-        { "id": "10", "firstName": "Sofia", "lastName": "Idrissi", "email": "sofia@test.com", "password": "password123" }
+        {
+            "id": "1",
+            "firstName": "Amine",
+            "lastName": "Benani",
+            "email": "amine@test.com",
+            "password": "amine_password"
+        },
+        {
+            "id": "2",
+            "firstName": "Sara",
+            "lastName": "Kadi",
+            "email": "sara@test.com",
+            "password": "sara_password"
+        },
+        {
+            "id": "3",
+            "firstName": "Yassine",
+            "lastName": "Zaki",
+            "email": "yassine@test.com",
+            "password": "yassine_password"
+        },
+        {
+            "id": "4",
+            "firstName": "Laila",
+            "lastName": "Mansouri",
+            "email": "laila@test.com",
+            "password": "laila_password"
+        },
+        {
+            "id": "5",
+            "firstName": "Karim",
+            "lastName": "Tahiri",
+            "email": "karim@test.com",
+            "password": "karim_password"
+        },
+        {
+            "id": "6",
+            "firstName": "Hiba",
+            "lastName": "Alami",
+            "email": "hiba@test.com",
+            "password": "hiba_password"
+        },
+        {
+            "id": "7",
+            "firstName": "Omar",
+            "lastName": "Fassi",
+            "email": "omar@test.com",
+            "password": "omar_password"
+        },
+        {
+            "id": "8",
+            "firstName": "Nadia",
+            "lastName": "Safi",
+            "email": "nadia@test.com",
+            "password": "nadia_password"
+        },
+        {
+            "id": "9",
+            "firstName": "Mehdi",
+            "lastName": "Rami",
+            "email": "mehdi@test.com",
+            "password": "mehdi_password"
+        },
+        {
+            "id": "10",
+            "firstName": "Sofia",
+            "lastName": "Idrissi",
+            "email": "sofia@test.com",
+            "password": "sofia_password"
+        }
     ],
     "favoritesOffers": [],
     "applications": []

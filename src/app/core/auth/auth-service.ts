@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { map, Observable, switchMap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class AuthService {
     private readonly http = inject(HttpClient);
@@ -13,24 +13,23 @@ export class AuthService {
 
     register(registerData: RegisterRequest): Observable<User | null> {
         return this.http.get<User[]>(`${this.apiUrl}?email=${registerData.email}`).pipe(
-            switchMap(users => {
+            switchMap((users) => {
                 if (users.length > 0) {
                     throw new Error('This email is already registered!');
                 }
-            
-            return this.http.post<User>(this.apiUrl, registerData);
-            })
+                return this.http.post<User>(this.apiUrl, registerData);
+            }),
         );
     }
 
     login(email: string, password: string): Observable<User | null> {
         return this.http.get<User[]>(`${this.apiUrl}?email=${email}&password=${password}`).pipe(
-            map(users => {
+            map((users) => {
                 if (users.length > 0) {
                     return users[0];
                 }
                 return null;
-            })
+            }),
         );
     }
 }

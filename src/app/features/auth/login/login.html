@@ -1,0 +1,108 @@
+<div class="min-h-screen flex flex-col justify-center items-center p-4 bg-[#0f0f0f] font-sans">
+    <div class="mb-8 flex items-center gap-3">
+        <div class="bg-orange-500 p-2.5 rounded-xl shadow-lg shadow-orange-500/20">
+            <span class="material-icons text-white text-2xl">work_outline</span>
+        </div>
+        <span class="text-3xl font-extrabold tracking-tight text-white"
+            >JobFinder<span class="text-orange-500">.</span></span
+        >
+    </div>
+
+    <div
+        class="w-full max-w-md bg-[#1a1a1a] rounded-2xl border border-neutral-800 shadow-2xl p-8 md:p-10"
+    >
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-white mb-2">Welcome</h1>
+            <p class="text-neutral-400 text-sm">
+                Enter your credentials to access your developer profile.
+            </p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-6">
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-neutral-300">Email Address</label>
+                <div class="relative">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xl"
+                        >mail</span
+                    >
+                    <input
+                        formControlName="email"
+                        [class.border-red-500]="isInvalid('email')"
+                        class="w-full pl-11 pr-4 py-3 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-white placeholder-neutral-600"
+                        placeholder="name@company.com"
+                        type="email"
+                    />
+                </div>
+                @if (isInvalid('email')) {
+                    <div class="flex items-center gap-1 text-red-300 text-xs mt-1">
+                        <span class="material-icons text-sm">error_outline</span>
+                        @if (loginForm.get('email')?.errors?.['required']) {
+                            <span>Email is required</span>
+                        }
+                        @if (loginForm.get('email')?.errors?.['email']) {
+                            <span>Invalid email format</span>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-neutral-300">Password</label>
+                <div class="relative">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xl"
+                        >lock</span
+                    >
+                    <input
+                        [type]="showPassword() ? 'text' : 'password'"
+                        formControlName="password"
+                        [class.border-red-500]="isInvalid('password')"
+                        class="w-full pl-11 pr-12 py-3 bg-neutral-900 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-white"
+                        placeholder="••••••••"
+                    />
+                    <button
+                        (click)="togglePassword()"
+                        type="button"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-orange-500"
+                    >
+                        <span class="material-icons text-xl">{{
+                            showPassword() ? 'visibility' : 'visibility_off'
+                        }}</span>
+                    </button>
+                </div>
+                @if (isInvalid('password')) {
+                    <div class="flex items-center gap-1 text-red-300 text-xs mt-1">
+                        <span class="material-icons text-sm">error_outline</span>
+                        <span>Minimum 6 characters required</span>
+                    </div>
+                }
+            </div>
+
+            <button
+                [disabled]="loginForm.invalid || authStore.isLoading()"
+                class="w-full py-3.5 bg-orange-500 hover:bg-orange-600 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed text-white font-bold rounded-lg shadow-lg shadow-orange-500/20 transition-all flex items-center justify-center gap-2 transform active:scale-[0.98]"
+            >
+                @if (authStore.isLoading()) {
+                    <span
+                        class="animate-spin border-2 border-white border-t-transparent rounded-full h-4 w-4"
+                    ></span>
+                } @else {
+                    <span class="material-icons text-lg">login</span>
+                }
+                <span>{{ authStore.isLoading() ? 'Connecting...' : 'Login to Account' }}</span>
+            </button>
+        </form>
+
+        <div class="mt-8 pt-8 border-t border-neutral-800 text-center">
+            <p class="text-neutral-400 text-sm">
+                Don't have an account?
+                <a
+                    routerLink="/register"
+                    class="text-orange-500 font-semibold hover:underline decoration-2 underline-offset-4 ml-1"
+                    >Create an account</a
+                >
+            </p>
+        </div>
+    </div>
+</div>

@@ -12,8 +12,8 @@ export const authGuard: CanActivateFn = (route, state) => {
     }
 
     toast.error('Access Denied', {
-            description: 'Please login to access this page.',
+        description: 'Please login to access this page.',
     });
-    
+
     return router.createUrlTree(['/login']);
 };
